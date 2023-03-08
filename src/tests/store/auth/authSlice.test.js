@@ -1,4 +1,4 @@
-import { authSlice, login, logout } from '../../../store/auth';
+import { authSlice, checkingCredentials, login, logout } from '../../../store/auth';
 import { authenticatedState, demoUser, initialState, notAuthenticatedState } from '../../fixtures/authFixtures';
 
 describe('Pruebas en authSlice', () => { 
@@ -47,5 +47,11 @@ describe('Pruebas en authSlice', () => {
             photoURL: null,
             errorMessage: errorMessage
         });
+    });
+
+    test('Debe de cambiar el estado a checking.', () => { 
+        const state = authSlice.reducer( authenticatedState, checkingCredentials() );
+        
+        expect( state.status ).toBe('checking');
     });
 });

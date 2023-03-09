@@ -30,9 +30,9 @@ export const startCreateUserWithPassword = ({ email, password, displayName }) =>
         /* Se llama la función de Firebase para la autenticación por JournalApp */
         const { ok, uid, photoURL, errorMessage } = await registerUserWithEmail({ email, password, displayName });
 
-        if( !ok ) return dispatch(logout({ errorMessage }))
+        if( !ok ) return dispatch(logout({ errorMessage, ok }))
 
-        dispatch( login({ uid, displayName, email, photoURL }) );
+        dispatch( login({ uid, displayName, email, photoURL, ok }) );
     }
 }
 
@@ -42,9 +42,9 @@ export const startLoginEmailPassword = ({ email, password }) => {
 
         const { ok, uid, displayName, photoURL, errorMessage } = await loginWithEmailPassword({ email, password });
         
-        if( !ok ) return dispatch(logout({ errorMessage }))
+        if( !ok ) return dispatch(logout({ errorMessage, ok }))
 
-        dispatch( login({ uid, displayName, email, photoURL }) );
+        dispatch( login({ uid, displayName, email, photoURL, ok }) );
     }
 }
 

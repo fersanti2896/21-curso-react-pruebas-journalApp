@@ -8,3 +8,5 @@ Esta sección está enfocado en el tema de las pruebas unitarias y de integraci�
 - Pruebas con `reducers`.
 - Variables de entorno de desarrollo, test y producción.
 - Pruebas en tareas asíncronas.
+
+Para la parte de las variables de entorno tanto de producción se da con las credenciales de `Firebase`.

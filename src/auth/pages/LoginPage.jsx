@@ -43,11 +43,13 @@ export const LoginPage = () => {
     return (
         <>
             <AuthLayout title='Iniciar Sesión'>
-                <form className='animate__animated animate__fadeIn animate__faster'
-                      onSubmit={ onSubmit }>
+                <form   aria-label='submit-form'
+                        className='animate__animated animate__fadeIn animate__faster'
+                        onSubmit={ onSubmit }>
                     <Grid container>
                         <Grid item sx={{ mb: 2 }} xs={ 12 } >
                             <TextField  error={ !!emailValid && formSubmitted }
+                                        label='Correo'
                                         helperText={ emailValid }
                                         name="email"
                                         placeholder='correo@google.com' 
@@ -59,6 +61,9 @@ export const LoginPage = () => {
 
                         <Grid item sx={{ mb: 2 }} xs={ 12 }>
                             <TextField  error={ !!passwordValid && formSubmitted }
+                                        inputProps={{
+                                            'data-testid': 'password'        
+                                        }}
                                         helperText={ passwordValid }
                                         name='password' 
                                         placeholder='Contraseña'
@@ -83,7 +88,8 @@ export const LoginPage = () => {
                             </Grid>
 
                             <Grid item xs={ 12 } sm={ 6 }>      
-                                <Button disabled={ isAuthenticating }
+                                <Button aria-label='google-btn'
+                                        disabled={ isAuthenticating }
                                         fullWidth 
                                         onClick={ onGoogleSingIn }
                                         variant='contained'>
